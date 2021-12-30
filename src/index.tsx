@@ -15,7 +15,7 @@ import { filterWithCache, filterWithSearchResult } from './lib/utils';
 import { Project } from './lib/type';
 
 export default function Command() {
-  return search();
+  return searchProject();
 }
 
 function SearchListItem({ searchResult }: { searchResult: Project }) {
@@ -33,7 +33,7 @@ function SearchListItem({ searchResult }: { searchResult: Project }) {
             <OpenInBrowserAction title="Open in IDE" url={searchResult.path} />
           </ActionPanel.Section>
           <ActionPanel.Section>
-            <PushAction title="重新搜索" target={<Research />} shortcut={{ modifiers: ["cmd"], key: "r" }} />
+            <PushAction title="Ignore the cache and search again" target={<Research />} shortcut={{ modifiers: ["cmd"], key: "r" }} />
           </ActionPanel.Section>
           <ActionPanel.Section>
             <CopyToClipboardAction
@@ -48,8 +48,8 @@ function SearchListItem({ searchResult }: { searchResult: Project }) {
   );
 }
 
-function search() {
-  const { state, search } = useSearch();
+function searchProject(keyword = '') {
+  const { state, search } = useSearch(keyword);
 
   return (
     <List isLoading={state.isLoading} onSearchTextChange={search} searchBarPlaceholder="Search by name..." throttle>
@@ -62,11 +62,11 @@ function search() {
   );
 }
 
-function useSearch() {
-  const [state, setState] = useState<SearchState>({ results: [], isLoading: true });
+function useSearch(keyword = '') {
+  const [state, setState] = useState<SearchState>({ results: [], isLoading: true, keyword: keyword });
 
   useEffect(() => {
-    search("");
+    search(state.keyword);
   }, []);
 
   async function search(searchText: string) {
@@ -95,7 +95,7 @@ function useSearch() {
 }
 
 function Research() {
-  return search();
+  return searchProject('nuxt');
 }
 
 async function performSearch(searchText: string): Promise<Project[]> {
@@ -136,4 +136,5 @@ async function performSearch(searchText: string): Promise<Project[]> {
 interface SearchState {
   results: Project[];
   isLoading: boolean;
+  keyword: string;
 }
