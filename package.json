@@ -1,0 +1,55 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "quick-open-project",
+  "title": "Quick Open Project",
+  "description": "Find your local git project and open it quickly",
+  "icon": "command-icon.png",
+  "author": "Ronglecat",
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "index",
+      "title": "Quick Open Project",
+      "subtitle": "Please enter the project keyword",
+      "description": "Find your local git project and open it quickly",
+      "mode": "view"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "workspace",
+      "title": "Workspace",
+      "description": "Multiple directories can be configured, separated by commas",
+      "type": "textfield",
+      "required": true,
+      "default": "~/Documents"
+    },
+    {
+      "name": "ide",
+      "title": "IDE",
+      "description": "Default IDE to open project",
+      "type": "textfield",
+      "required": true,
+      "default": ""
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.26.3",
+    "node-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "~16.10.0",
+    "@types/react": "^17.0.28",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "react-devtools": "^4.19.2",
+    "typescript": "^4.4.3"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "lint": "ray lint"
+  }
+}
