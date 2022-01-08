@@ -88,7 +88,12 @@ export async function readCache(): Promise<Config> {
 export async function findProject(dirPath: string): Promise<Project[]> {
   const result: Project[] = [];
   const currentChildren: ChildInfo[] = [];
-  const dirIter = await fs.readdirSync(dirPath);
+  let dirIter = [];
+  try {
+    dirIter = fs.readdirSync(dirPath);
+  } catch (error) {
+    return result;
+  }
 
   for await (const item of dirIter) {
     const itemPath = path.join(dirPath, item);
