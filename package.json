@@ -1,0 +1,114 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "cheetah",
+  "title": "Cheetah",
+  "description": "Search for a local Git project and open it with the specified application",
+  "icon": "logo.png",
+  "author": "ronglecat",
+  "categories": [
+    "Developer Tools"
+  ],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "editor",
+      "title": "Open with Editor",
+      "description": "Open the specified project using the editor.",
+      "mode": "view",
+      "icon": "command/editor.png"
+    },
+    {
+      "name": "git",
+      "title": "Open with Git GUI",
+      "description": "Open the specified project using the Git GUI.",
+      "mode": "view",
+      "icon": "command/git.png"
+    },
+    {
+      "name": "terminal",
+      "title": "Open with Terminal",
+      "description": "Open the specified project using the terminal.",
+      "mode": "view",
+      "icon": "command/terminal.png"
+    },
+    {
+      "name": "finder",
+      "title": "Open with Finder",
+      "description": "Open the specified project using the Finder.",
+      "mode": "view",
+      "icon": "command/finder.png"
+    }, {
+      "name": "chooseApp",
+      "title": "Choose Application",
+      "description": "Specifying applications for projects.",
+      "mode": "view",
+      "icon": "command/app.png"
+    },
+    {
+      "name": "editCache",
+      "title": "Edit cache file",
+      "description": "Open the cache file using the default editor.",
+      "mode": "no-view",
+      "icon": "command/editCache.png"
+    },
+    {
+      "name": "clearCache",
+      "title": "Clear cache",
+      "description": "Clear cache files.",
+      "mode": "no-view",
+      "icon": "command/clearCache.png"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "workspaces",
+      "description": "The tool will search for projects in the working directory you set, with multiple directories separated by commas.",
+      "required": false,
+      "type": "textfield" ,
+      "title": "Setting working directory"
+    },
+    {
+      "name": "defaultEditor",
+      "description": "The default editor used to open the project.",
+      "required": false,
+      "type": "appPicker" ,
+      "title": "Choose default Editor"
+    },
+    {
+      "name": "defaultGitApp",
+      "description": "The Git GUI application used to open the project.",
+      "required": false,
+      "type": "appPicker" ,
+      "title": "Choose Git GUI"
+    },
+    {
+      "name": "defaultTerminalApp",
+      "description": "The terminal application used to open the project.",
+      "required": false,
+      "type": "appPicker" ,
+      "title": "Choose Terminal App"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.42.2",
+    "@raycast/utils": "^1.4.8",
+    "cheetah-core": "file:/Users/caohaoxia/Documents/work/tools/cheetah-core"
+  },
+  "devDependencies": {
+    "@types/node": "18.8.3",
+    "@types/react": "18.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.5.1",
+    "typescript": "^4.4.3"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "publish": "ray publish"
+  }
+}
