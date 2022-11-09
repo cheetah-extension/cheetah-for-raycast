@@ -110,7 +110,7 @@
   "dependencies": {
     "@raycast/api": "^1.42.2",
     "@raycast/utils": "^1.4.8",
-    "cheetah-core": "file:/Users/caohaoxia/Documents/work/tools/cheetah-core"
+    "cheetah-core": "^1.0.0"
   },
   "devDependencies": {
     "@types/node": "18.8.3",
