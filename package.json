@@ -1,8 +1,9 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
+  "version": "1.0.0",
   "name": "cheetah",
   "title": "Cheetah",
-  "description": "Search for a local Git project and open it with the specified application",
+  "description": "Search for a local Git project and open it with the specified application.",
   "icon": "logo.png",
   "author": "ronglecat",
   "categories": [
@@ -12,32 +13,49 @@
   "commands": [
     {
       "name": "editor",
-      "title": "Open with Editor",
+      "title": "Open With Editor",
       "description": "Open the specified project using the editor.",
       "mode": "view",
-      "icon": "command/editor.png"
+      "icon": "command/editor.png",
+      "keywords": [
+        "editor",
+        "Editor"
+      ]
     },
     {
       "name": "git",
-      "title": "Open with Git GUI",
+      "title": "Open With Git GUI",
       "description": "Open the specified project using the Git GUI.",
       "mode": "view",
-      "icon": "command/git.png"
+      "icon": "command/git.png",
+      "keywords": [
+        "git",
+        "Git"
+      ]
     },
     {
       "name": "terminal",
-      "title": "Open with Terminal",
+      "title": "Open With Terminal",
       "description": "Open the specified project using the terminal.",
       "mode": "view",
-      "icon": "command/terminal.png"
+      "icon": "command/terminal.png",
+      "keywords": [
+        "terminal",
+        "Terminal"
+      ]
     },
     {
       "name": "finder",
-      "title": "Open with Finder",
+      "title": "Open With Finder",
       "description": "Open the specified project using the Finder.",
       "mode": "view",
-      "icon": "command/finder.png"
-    }, {
+      "icon": "command/finder.png",
+      "keywords": [
+        "finder",
+        "Finder"
+      ]
+    },
+    {
       "name": "chooseApp",
       "title": "Choose Application",
       "description": "Specifying applications for projects.",
@@ -46,14 +64,14 @@
     },
     {
       "name": "editCache",
-      "title": "Edit cache file",
+      "title": "Edit Cache File",
       "description": "Open the cache file using the default editor.",
       "mode": "no-view",
       "icon": "command/editCache.png"
     },
     {
       "name": "clearCache",
-      "title": "Clear cache",
+      "title": "Clear Cache",
       "description": "Clear cache files.",
       "mode": "no-view",
       "icon": "command/clearCache.png"
@@ -64,28 +82,28 @@
       "name": "workspaces",
       "description": "The tool will search for projects in the working directory you set, with multiple directories separated by commas.",
       "required": false,
-      "type": "textfield" ,
+      "type": "textfield",
       "title": "Setting working directory"
     },
     {
       "name": "defaultEditor",
       "description": "The default editor used to open the project.",
       "required": false,
-      "type": "appPicker" ,
+      "type": "appPicker",
       "title": "Choose default Editor"
     },
     {
       "name": "defaultGitApp",
       "description": "The Git GUI application used to open the project.",
       "required": false,
-      "type": "appPicker" ,
+      "type": "appPicker",
       "title": "Choose Git GUI"
     },
     {
       "name": "defaultTerminalApp",
       "description": "The terminal application used to open the project.",
       "required": false,
-      "type": "appPicker" ,
+      "type": "appPicker",
       "title": "Choose Terminal App"
     }
   ],

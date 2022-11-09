@@ -1,7 +1,7 @@
 import { List } from "@raycast/api";
 import { COMMAND } from "cheetah-core";
 import { ResultItem } from "../types";
-import Actions from './actions';
+import Actions from "./actions";
 
 export default ({
   searchResult,
@@ -10,13 +10,14 @@ export default ({
   commandType,
   filterProject,
 }: {
-  searchResult: ResultItem,
-  appPath: string,
-  forced: boolean,
-  commandType: COMMAND
-  filterProject: (keyword: string) => Promise<void>
+  searchResult: ResultItem;
+  appPath: string;
+  forced: boolean;
+  commandType: COMMAND;
+  filterProject: (keyword: string) => Promise<void>;
 }) => {
-  const finalAppPath = (forced ? appPath : (searchResult.idePath || appPath)) || 'Finder';
+  const finalAppPath =
+    (forced ? appPath : searchResult.idePath || appPath) || "Finder";
 
   return (
     <List.Item
@@ -34,4 +35,4 @@ export default ({
       }
     />
   );
-}
+};

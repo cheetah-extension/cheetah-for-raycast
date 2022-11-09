@@ -1,19 +1,19 @@
-import { Action, ActionPanel, useNavigation } from "@raycast/api"
-import { COMMAND, updateHits } from "cheetah-core"
+import { Action, ActionPanel, useNavigation } from "@raycast/api";
+import { COMMAND, updateHits } from "cheetah-core";
 import { refreshKeyword } from "../constant";
-import { ResultItem } from "../types"
-import ApplicationList from './applicationList';
+import { ResultItem } from "../types";
+import ApplicationList from "./applicationList";
 
 export default ({
   searchResult,
   finalAppPath,
   filterProject,
-  commandType
+  commandType,
 }: {
-  searchResult: ResultItem,
-  finalAppPath: string,
-  filterProject: (keyword: string) => Promise<void>,
-  commandType: COMMAND
+  searchResult: ResultItem;
+  finalAppPath: string;
+  filterProject: (keyword: string) => Promise<void>;
+  commandType: COMMAND;
 }) => {
   if (searchResult.refresh) {
     return (
@@ -21,11 +21,11 @@ export default ({
         <Action
           title="Refresh Cache"
           onAction={() => {
-            filterProject(`${refreshKeyword}${searchResult.arg}`)
+            filterProject(`${refreshKeyword}${searchResult.arg}`);
           }}
         />
       </ActionPanel>
-    )
+    );
   }
   if (commandType === COMMAND.SET_APPLICATION) {
     const { push } = useNavigation();
@@ -33,10 +33,12 @@ export default ({
       <ActionPanel>
         <Action
           title="Choose Application"
-          onAction={() => push(<ApplicationList projectPath={searchResult.path!} />)}
+          onAction={() =>
+            push(<ApplicationList projectPath={searchResult.path!} />)
+          }
         />
       </ActionPanel>
-    )
+    );
   }
   return (
     <ActionPanel>
@@ -46,7 +48,7 @@ export default ({
           target={searchResult.path!}
           application={finalAppPath}
           onOpen={async () => {
-            await updateHits(searchResult.path!)
+            await updateHits(searchResult.path!);
           }}
         />
       </ActionPanel.Section>
@@ -58,5 +60,5 @@ export default ({
         />
       </ActionPanel.Section>
     </ActionPanel>
-  )
-}
+  );
+};

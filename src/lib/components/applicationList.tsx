@@ -1,14 +1,22 @@
-import { ActionPanel, Action, List, Application, open, showHUD } from "@raycast/api";
+import {
+  ActionPanel,
+  Action,
+  List,
+  Application,
+  open,
+  showHUD,
+} from "@raycast/api";
 import { setProjectApp } from "cheetah-core";
 import { useEffect } from "react";
-import useGetApplicationList from '../effects/useGetApplicationList';
+import useGetApplicationList from "../effects/useGetApplicationList";
 
 export default ({ projectPath }: { projectPath: string }) => {
-  const [applicationList, isLoading, getApplicationList] = useGetApplicationList()
+  const [applicationList, isLoading, getApplicationList] =
+    useGetApplicationList();
 
   useEffect(() => {
     getApplicationList();
-  }, [])
+  }, []);
 
   return (
     <List
@@ -18,14 +26,24 @@ export default ({ projectPath }: { projectPath: string }) => {
     >
       <List.Section title="Results" subtitle={applicationList?.length + ""}>
         {applicationList?.map((searchResult: Application) => (
-          <SearchListItem key={searchResult.name} searchResult={searchResult} projectPath={projectPath} />
+          <SearchListItem
+            key={searchResult.name}
+            searchResult={searchResult}
+            projectPath={projectPath}
+          />
         ))}
       </List.Section>
     </List>
   );
-}
+};
 
-function SearchListItem({ searchResult, projectPath }: { searchResult: Application, projectPath: string }) {
+function SearchListItem({
+  searchResult,
+  projectPath,
+}: {
+  searchResult: Application;
+  projectPath: string;
+}) {
   return (
     <List.Item
       title={searchResult.name}
@@ -34,11 +52,14 @@ function SearchListItem({ searchResult, projectPath }: { searchResult: Applicati
       actions={
         <ActionPanel>
           <ActionPanel.Section>
-            <Action title="Choose and Complete" onAction={async () => {
-              await setProjectApp(projectPath, searchResult.name);
-              await open(projectPath, searchResult.name);
-              await showHUD('The application is set up and tries to open');
-            }} />
+            <Action
+              title="Choose and Complete"
+              onAction={async () => {
+                await setProjectApp(projectPath, searchResult.name);
+                await open(projectPath, searchResult.name);
+                await showHUD("The application is set up and tries to open");
+              }}
+            />
           </ActionPanel.Section>
         </ActionPanel>
       }

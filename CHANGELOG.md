@@ -1,3 +1,5 @@
 # Cheetah Changelog
 
-## [Initial Version] - 2022-11-08
+## [1.0.0] - 2022-11-09
+
+Extended first release submission

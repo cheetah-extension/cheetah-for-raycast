@@ -3,16 +3,16 @@ import { COMMAND } from "cheetah-core";
 import { useEffect, useState } from "react";
 import useInitCore from "../effects/useInitCore";
 import useProjectFilter from "../effects/useProjectFilter";
-import SearchListItem from './searchListItem';
+import SearchListItem from "./searchListItem";
 
-export default (command: COMMAND, appPath: string, forced: boolean = false,) => {
+export default (command: COMMAND, appPath: string, forced = false) => {
   useInitCore();
   const [searchText, setSearchText] = useState("");
   const [data, loading, filterProject] = useProjectFilter();
 
   useEffect(() => {
     filterProject(searchText);
-  }, [searchText])
+  }, [searchText]);
 
   return (
     <List
@@ -22,10 +22,7 @@ export default (command: COMMAND, appPath: string, forced: boolean = false,) => 
       throttle
       enableFiltering={false}
     >
-      <List.Section
-        title="Results"
-        subtitle={data?.length + ""}
-      >
+      <List.Section title="Results" subtitle={data?.length + ""}>
         {data?.map((searchResult, index) => (
           <SearchListItem
             key={searchResult.name + index}
@@ -39,4 +36,4 @@ export default (command: COMMAND, appPath: string, forced: boolean = false,) => 
       </List.Section>
     </List>
   );
-}
+};
