@@ -48,7 +48,7 @@ export default (): [
 
       setResultList(result);
       setLoading(false);
-    } catch (error: any) {
+    } catch (error: unknown) {
       errorHandle(error);
     }
   }

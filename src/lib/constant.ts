@@ -1,15 +1,9 @@
 import { join } from "path";
-import { HOME_PATH } from "cheetah-core";
+import { environment } from "@raycast/api";
 
 export const refreshKeyword = "[refresh]";
 
-export const cachePath = join(
-  HOME_PATH,
-  ".raycast",
-  "fmcat",
-  "cheetah",
-  "config.json"
-);
+export const cachePath = join(environment.supportPath, "config.json");
 
 // 错误代码对应的文字提示
 export const ErrorCodeMessage: { [code: string]: string } = {
